@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+            <div class="col-lg-12 nav">
+                    <img src="/images/img1.jpg" alt="">
+                    <div class="ito">
+                            <button type="submit" class="me-2 bouton"><a href="/" class="bouton">HOME</a></button>
+                            <button type="submit" class="me-2 bouton"><a href="/" class="bouton">SIGN UP</a></button>
+                            <button type="submit" class="me-2 bouton"><a href="/" class="bouton">LOGIN</a></button>
+                    </div>
+            </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-3">
+        <div class="col-lg-8 bodyAdd">
+            <a href="/question/add" class="btn btn-dark float-right mt-3 mx-3">Add Question</a>
+            <a href="/" class="btn btn-dark float-right mt-3 ">Home</a>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Question</th>
+                        <th>Description</th>
+                        <th>Categories</th>
+                        <th>Répondeur</th>
+                        <th>Réponses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td><%= question.username %></td>
+                    <td><%= question.question %></td>
+                    <td><%= question.content  %></td>
+                    <td><%= question.category%></td>
+                    <td><% for(let answer of question.answer){ %>
+                            <%= answer.username %> <br><br>
+                    <% } %></td>
+                    <td><% for(let answer of question.answer){ %>
+                            <%= answer.content %> <br><br>
+                <% } %></td>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-4">
+            <form action="/answer/add" method="post">
+                <input type="hidden" name="question_id" value="<%= question.question_id %>">
+                <div class="mt-3">
+                    <label for="username">Répondeur:</label>
+                    <input type="text" name="username" class="form-control">
+                </div>
+                <div class="mt-3">
+                    <label for="content">Votre Réponses: </label>
+                    <textarea name="content" id="content" class="form-control" rows="10"></textarea>
+                </div>
+                <div class="mt-3">
+                    <button type="submit" class="form-control btn btn-primary">answer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

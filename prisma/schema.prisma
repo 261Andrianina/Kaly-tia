@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  question_id Int @id @default(autoincrement())
+  question String @db.VarChar(255)
+  content String
+  username String @db.VarChar(255)
+  answer Answer []
+  category questionOnCategory []
+}
+
+model Answer {
+  answer_id Int @id @default(autoincrement())
+  content  String
+  username String @db.VarChar(255)
+  question_id Int 
+  question Question @relation(references: [question_id], fields: [question_id])
+}
+
+model categories{
+  category_id Int @id @default(autoincrement())
+  name        String
+  question    questionOnCategory []
+}
+
+model questionOnCategory{
+  question_id Int
+  category_id Int
+  question Question @relation(references: [question_id] , fields: [question_id])
+  categories categories @relation(references: [category_id] , fields: [category_id])
+
+  @@id([question_id , category_id])
+}
+model like{
+  like_id Int @id @default(autoincrement())
+  likeValue Int
+}
+
+
+
+
+
+

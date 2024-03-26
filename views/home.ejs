@@ -1,0 +1,70 @@
+<div class="container">
+        <div class="row">
+                <div class="col-lg-12 nav">
+                        <img src="/images/img1.jpg" alt="">
+                        <div class="ito">
+                            <button type="submit" class="me-2 bouton"><a href="/" class="bouton">HOME</a></button>
+                            <button type="submit" class="me-2 bouton"><a href="/" class="bouton">SIGN UP</a></button>
+                            <button type="submit" class="me-2 bouton"><a href="/" class="bouton">LOGIN</a></button>
+                        </div>
+                </div>
+        </div>
+</div>
+
+<div class="container">
+        <div class="row mt-3">
+                <div class="col-lg-6 bodyy">
+                   <h1>Aventures ou Mesaventures culinaires et Hotelleries? Veuillez les Partager avec nous!!</h1>  
+                   <p>Kali'tia est un forum qui vous est dédié au partage de bons plans bouffe et de bonnes adresses 'Hotels', les avis, les prix et les photos...<br><br>
+                     N'hésitez pas à publier et partager vos expériences culinaires et hotellerie!  
+                   </p>   
+                   <div class="mt-5">
+                        <a href="/question/add" class="btn poser">POSER UNE QUESTION</a>                  
+                   </div>
+                </div> 
+                <div class="col-lg-6 body">
+                        <img src="/images/food1.png" class="imgB" alt="">   
+                        <img src="/images/food2.png" class="imgB" alt="">  
+                        <img src="/images/food3.png" class="imgB" alt="">
+                        <img src="/images/food4.png" class="imgB" alt="">  
+                </div>
+        </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 body3">
+            <h1 class="listeQ">Listes des questions</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>question</th>
+                        <th>Voir</th>
+                        <th>Répondre</th>
+                        <th>J'aime</th>
+                        <th>J'aime pas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let item of questions){ %>
+                        <tr>
+                            <td><%= item.question %></td>
+                            <td>
+                                <a href="/view/question/<%= item.question_id %>"><i class="fa fa-eye facolor"></i></a>
+                            </td>
+                            <td>
+                                <a href="/answer/add/<%= item.question_id %>"><i class="fa fa-edit facolor"></i></a>
+                            </td>
+                            <td>    
+                                <a href=""><i class="fa fa-thumbs-o-up facolor"></i></a>
+                            </td>
+                            <td>
+                                <a href=""><i class="fa fa-thumbs-o-down facolor"></i></a>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
